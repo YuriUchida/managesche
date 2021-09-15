@@ -1,0 +1,11 @@
+<h1>GeekCalendar</h1>
+<h3>URL詳細</h3>
+<div class="post">
+  <p><a href=<%= @post.body %>><%= @post.body %></p>
+  <p><%= @post.created_at %></p>
+</div>
+
+
+
+<%= link_to "一覧に戻る", posts_path %>
+<%= link_to "編集する", edit_post_path(@post.id) %>
