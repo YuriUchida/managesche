@@ -1,3 +1,6 @@
+<%= stylesheet_link_tag 'new', :media => "all" %>
+
+<div class="post-container">
 <%= form_with(model: @blog, local: true) do |form| %>
 
     <div class="title">
@@ -5,12 +8,13 @@
       <%= form.text_field :title %>
     </div>
 
+
     <div class="category">
       <%= form.label :category %>
       <%= form.text_field :category %>
     </div>
 
-  
+
     <div class="time">
       <%= form.label :start_time %>
       <%= form.datetime_select :start_time %>
@@ -26,4 +30,5 @@
       <%= form.submit %>
     </div>
   
-  <% end %>
+  　<% end %>
+</div>

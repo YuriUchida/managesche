@@ -8,7 +8,7 @@ class BlogsController < ApplicationController
       #部分検索
       @blogs = Blog.where("category LIKE ? ",'%' + params[:search] + '%')
     end
-    @allblogs = Blog.all
+      @allblogs = Blog.select(:category).distinct
   end
 
   def new

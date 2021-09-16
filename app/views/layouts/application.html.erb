@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Geekcalendar</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>GeekCalendar</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <h1>GeekCalendar</h1>
+      <div class="header-list">
+      <ul>
+        <li><%= link_to "カレンダー管理", blogs_path %></li>
+        <li><%= link_to "リンク管理",posts_path %></li>
+      </ul>
+      </div>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+     <p>Copyright © GeekSalon All Rights Reserved.</p>
+    </footer>
   </body>
 </html>

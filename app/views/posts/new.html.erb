@@ -1,3 +1,6 @@
+<%= stylesheet_link_tag 'new', :media => "all" %>
+
+<div class="post-container">
 <%= form_with(model: @post, local: true) do |form| %>
 
     <div class="title">
@@ -19,4 +22,5 @@
       <%= form.submit %>
     </div>
 
-<% end %>
+    <% end %>
+</div>

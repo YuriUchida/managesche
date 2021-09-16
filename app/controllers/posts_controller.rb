@@ -2,14 +2,15 @@ class PostsController < ApplicationController
 
     def index
         if params[:search] == nil
-            @posts= Post.all
-          elsif params[:search] == ''
-            @posts= Post.all
-          else
-            #部分検索
-            @posts = Post.where("category LIKE ? ",'%' + params[:search] + '%')
-          end
-          @allposts = Post.all
+          @posts= Post.all
+        elsif params[:search] == ''
+          @posts= Post.all
+        else
+          #部分検索
+          @posts = Post.where("category LIKE ? ",'%' + params[:search] + '%')
+        end
+          @posts = @posts.page(params[:page]).per(5)
+          @allposts = Post.select(:category).distinct
     end
 
     def new

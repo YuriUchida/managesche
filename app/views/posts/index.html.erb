@@ -1,37 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<h1>GeekCalendar</h1>
+
 
 <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
 
 <br>
+<h3>カテゴリ</h3>
+<% @allposts.each do |post| %>
+    <%= link_to post.category,  controller: "posts", action: "index", search: post.category%>
+<% end %>
 
-<%= link_to 'カレンダーページへ', blogs_index_path %>
-<table>
-  <thead>
-  <h3>リンク一覧</h3>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><a href=<%= post.body %>><%= post.title %></td>
-        <td><%= link_to '詳細', post %></td>
-        <td><%= link_to '編集', edit_post_path(post.id) %></td>
-        <td><%= link_to '削除', post_path(post.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-  
-</table>
+<%= stylesheet_link_tag 'index', :media => "all" %>
 
 <br>
+<%= page_entries_info @posts %>
+
+<div class="posts-container">
+<h3>リンク一覧</h3>
+  <% @posts.each do |post| %>
+    <div class="post">
+      <div class="main-box">
+        <div class="left-container">
+          <a href=<%= post.body %>><%= post.title %>
+        </div>
+        <div class="right-container">
+          <%= link_to '詳細', post %>
+          <%= link_to '編集', edit_post_path(post.id) %>
+          <%= link_to '削除',post_path(post.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= paginate @posts %>
 
 <%= link_to 'リンク登録', new_post_path %>
-
-<br>
-<h3>カテゴリ</h3>
-<% @posts.each do |post| %>
-    <%= link_to post.category,  controller: "posts", action: "index", search: post.category%>
-  <% end %>
-
