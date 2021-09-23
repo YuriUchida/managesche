@@ -1,4 +1,7 @@
 class BlogsController < ApplicationController
+
+  before_action :authenticate_user!
+
   def index
     if params[:search] == nil
       @blogs= Blog.all
@@ -23,7 +26,9 @@ class BlogsController < ApplicationController
   end
 
   def create
-    Blog.create(blog_parameter)
+    @blog = Blog.new(blog_parameter) #データを新規登録するためのインスタンス生成
+    @blog.user_id = current_user.id
+    @blog.save #データをデータベースに保存するためのsaveメソッド実行
     redirect_to blogs_path
   end
 
@@ -49,7 +54,7 @@ class BlogsController < ApplicationController
   private
 
   def blog_parameter
-    params.require(:blog).permit(:title, :content, :start_time, :category)
+    params.require(:blog).permit(:title, :content, :start_time, :category, :user_id)
   end
   
 end

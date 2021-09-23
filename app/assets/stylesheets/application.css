@@ -20,11 +20,16 @@
     margin: 0;
   }
   body {
+    background: #757F9A;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #D7DDE8, #757F9A);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ",
       Meiryo, "ＭＳ Ｐゴシック", sans-serif;
   }
   header {
-    background-color: #00acee;
+    background: #757F9A;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #D7DDE8, #757F9A);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #D7DDE8, #757F9A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     height: 80px;
     font-weight: bold;
     display: flex;
@@ -61,3 +66,13 @@
     position: fixed;
     justify-content: flex-end;
   }
+
+  .blog {   
+    background-color: rgba(0, 0, 0, 0.15);
+    
+  }
+
+  a:hover {
+    color: rgb(255, 123, 0);
+  }
+

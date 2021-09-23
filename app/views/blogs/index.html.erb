@@ -11,14 +11,18 @@
 <% end %>
 
 <h3>カレンダー</h3>
-<%= link_to 'スケジュール記入', new_blog_path %>
+<%= button_to 'スケジュール記入', new_blog_path %>
+<div class="blog">
 <%= month_calendar events: @blogs do |date, blogs| %>
   <%= date.day %>
 
 
   <% blogs.each do |blog| %>
-    <div>
+    
+    <% if user_signed_in? && current_user.id == blog.user_id %>
       <%= link_to blog.title, blog %>
-    </div>
+    <% end %>
+    
   <% end %>
+</div>
 <% end %>

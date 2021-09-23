@@ -18,21 +18,25 @@
 <div class="posts-container">
 <h3>リンク一覧</h3>
   <% @posts.each do |post| %>
+    <% if user_signed_in? && current_user.id == post.user_id %>
     <div class="post">
       <div class="main-box">
         <div class="left-container">
           <a href=<%= post.body %>><%= post.title %>
         </div>
         <div class="right-container">
+        
           <%= link_to '詳細', post %>
           <%= link_to '編集', edit_post_path(post.id) %>
           <%= link_to '削除',post_path(post.id), method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       </div>
     </div>
+    <% end %>
   <% end %>
 </div>
 
 <%= paginate @posts %>
 
-<%= link_to 'リンク登録', new_post_path %>
+
+<%= button_to 'リンク登録', new_post_path %>
